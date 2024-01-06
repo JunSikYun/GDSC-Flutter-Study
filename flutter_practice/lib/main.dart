@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'flutter_logo_1000.png',
+              'assets/images/flutter_logo_1000.png',
               width:100.0,
             ),
             const Text(
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text('Increment'),
                   ),
                 ),
-                // SizedBox(width: 8), // 추가: 간격 조절
+                SizedBox(width: 8), // 추가: 간격 조절
                 Expanded(
                   child: ElevatedButton(
                     onPressed: _decrementCounter,
