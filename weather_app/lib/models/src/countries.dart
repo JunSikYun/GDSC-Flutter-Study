@@ -1,15 +1,12 @@
 // original : https://raw.githubusercontent.com/biessek/flutter_country_picker/master/lib/country.dart
-
-import 'package:flutter/foundation.dart';
-
 class Country {
   final String dialingCode;
   final String isoCode;
   final String name;
 
   const Country({
-    @required this.dialingCode,
-    @required this.isoCode,
+    required this.dialingCode,
+    required this.isoCode,
     this.name = "",
   });
 
@@ -1537,14 +1534,14 @@ class Country {
 
   /// Creates a copy with modified values
   Country copyWith({
-    String name,
-    String isoCode,
-    String dialingCode,
+    required String name,
+    required isoCode,
+    required String dialingCode,
   }) {
     return Country(
-      name: name ?? this.name,
+      name: name,
       isoCode: isoCode ?? this.isoCode,
-      dialingCode: dialingCode ?? this.dialingCode,
+      dialingCode: dialingCode,
     );
   }
 }

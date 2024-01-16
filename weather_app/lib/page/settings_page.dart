@@ -9,7 +9,7 @@ import 'package:weather_app/widget/segmented_control.dart';
 class SettingsPage extends StatefulWidget {
   final AppSettings settings;
 
-  const SettingsPage({Key key, this.settings}) : super(key: key);
+  const SettingsPage({Key? key,required this.settings}) : super(key: key);
 
   @override
   SettingsPageState createState() {
@@ -61,7 +61,7 @@ class SettingsPageState extends State<SettingsPage> {
             Text('Temperature Unit'),
             SegmentedControl(
               temperatureOptions,
-              onSelectionChanged: (int selection) => _handleTemperatureUnitChange(selection),
+              onSelectionChanged: (int selection) => _handleTemperatureUnitChange(selection), key: null,
             ),
             Divider(),
             ListTile(
@@ -72,7 +72,7 @@ class SettingsPageState extends State<SettingsPage> {
                   MaterialPageRoute(
                     fullscreenDialog: true,
                     builder: (BuildContext context) {
-                      return AddNewCityPage();
+                      return AddNewCityPage(settings: null,);
                     },
                   ),
                 );

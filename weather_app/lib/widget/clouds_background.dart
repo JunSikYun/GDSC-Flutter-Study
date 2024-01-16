@@ -4,8 +4,8 @@ class Clouds extends AnimatedWidget {
   final bool isRaining;
 
   Clouds({
-    Key key,
-    Animation<Color> animation,
+    Key? key,
+    required Animation<Color> animation,
     this.isRaining = false,
   }) : super(key: key, listenable: animation);
 
@@ -35,7 +35,7 @@ class CloudPainter extends CustomPainter {
   final Paint cloudPaint;
   final bool isRaining;
 
-  CloudPainter({this.cloudPaint, this.isRaining});
+  CloudPainter({required this.cloudPaint, required this.isRaining});
 
   @override
   void paint(Canvas canvas, Size size) {

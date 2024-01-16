@@ -4,7 +4,7 @@ class Forecast {
   City city;
   List<ForecastDay> days;
 
-  Forecast({this.city, this.days});
+  Forecast({required this.city,required this.days});
 
   static ForecastDay getSelectedDayForecast(Forecast forecast, DateTime selectedDate) {
     return forecast.days.firstWhere((ForecastDay d) => d.date.day == selectedDate.day);
@@ -26,7 +26,7 @@ class ForecastDay {
     return self.hourlyWeather.firstWhere((Weather w) => w.dateTime.hour >= hour);
   }
 
-  ForecastDay({this.hourlyWeather, this.date, this.min, this.max});
+  ForecastDay({required this.hourlyWeather,required this.date,required this.min,required this.max});
 }
 
 class Weather {
@@ -38,12 +38,12 @@ class Weather {
   String weatherIcon;
 
   Weather(
-      {this.city,
-      this.dateTime,
-      this.temperature,
-      this.description,
-      this.cloudCoveragePercentage,
-      this.weatherIcon});
+      {required this.city,
+      required this.dateTime,
+      required this.temperature,
+      required this.description,
+      required this.cloudCoveragePercentage,
+      required this.weatherIcon});
 
   static Map<WeatherDescription, String> displayValues = {
     WeatherDescription.clear: "Clear",
@@ -59,7 +59,7 @@ class Temperature {
 
   static int celsiusToFahrenheit(int temp) => (temp * 9 / 5 + 32).floor();
 
-  Temperature({this.current, this.temperatureUnit});
+  Temperature({required this.current,required this.temperatureUnit});
 }
 
 enum TemperatureUnit { celsius, fahrenheit }

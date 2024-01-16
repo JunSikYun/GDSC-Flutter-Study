@@ -9,7 +9,7 @@ class SegmentedControl extends StatefulWidget {
 
   SegmentedControl(
     this.segments, {
-    this.key,
+    required this.key,
     this.onSelectionChanged,
     this.editable = true,
     this.initialSelectionIndex = 0,
@@ -28,7 +28,7 @@ class _SegmentedControlState extends State<SegmentedControl> {
     widget.onSelectionChanged(widgetNum);
   }
 
-  Color isEditable() {
+  Color? isEditable() {
     if (widget.editable) {
       return Theme.of(context).primaryColor;
     } else {
@@ -37,14 +37,15 @@ class _SegmentedControlState extends State<SegmentedControl> {
   }
 
   List<Widget> createSegments() {
-    if (widget?.segments?.isEmpty == true) {
+    if (widget.segments.isEmpty == true) {
       return [];
     }
-    var lastSegment = widget.segments?.last;
+    var lastSegment = widget.segments.last;
+    // ignore: unnecessary_null_comparison
     if (lastSegment == null) return [];
     List<Color> childBorders = [];
 
-    var selectedIndex = this.selectedIndex ?? widget.initialSelectionIndex;
+    var selectedIndex = this.selectedIndex;
 
     List<Widget> segmentWidgets = [];
     widget.segments.forEach((segment) {

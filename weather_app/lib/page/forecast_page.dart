@@ -21,10 +21,10 @@ class ForecastPage extends StatefulWidget {
   final AppSettings settings;
 
   const ForecastPage({
-    Key key,
-    this.menu,
-    this.settingsButton,
-    @required this.settings,
+    Key? key,
+    required this.menu,
+    required this.settingsButton,
+    required this.settings,
   }) : super(key: key);
 
   @override
@@ -33,18 +33,18 @@ class ForecastPage extends StatefulWidget {
 
 class _ForecastPageState extends State<ForecastPage> with TickerProviderStateMixin {
   int activeTabIndex = 0;
-  ForecastController _forecastController;
-  AnimationController _animationController;
-  AnimationController _weatherConditionAnimationController;
-  ColorTween _colorTween;
-  ColorTween _backgroundColorTween;
-  ColorTween _textColorTween;
-  ColorTween _cloudColorTween;
-  Tween<Offset> _positionOffsetTween;
-  TweenSequence<Offset> _cloudPositionOffsetTween;
-  ForecastAnimationState currentAnimationState;
-  ForecastAnimationState nextAnimationState;
-  Offset verticalDragStart;
+  late ForecastController _forecastController;
+  late AnimationController _animationController;
+  late AnimationController _weatherConditionAnimationController;
+  late ColorTween _colorTween;
+  late ColorTween _backgroundColorTween;
+  late ColorTween _textColorTween;
+  late ColorTween _cloudColorTween;
+  late Tween<Offset> _positionOffsetTween;
+  late TweenSequence<Offset> _cloudPositionOffsetTween;
+  late ForecastAnimationState currentAnimationState;
+  late ForecastAnimationState nextAnimationState;
+  late Offset verticalDragStart;
 
   @override
   void initState() {
@@ -132,12 +132,12 @@ class _ForecastPageState extends State<ForecastPage> with TickerProviderStateMix
   }
 
   void _buildAnimationController() {
-    _animationController?.dispose();
+    _animationController.dispose();
     _animationController = AnimationController(
       duration: Duration(milliseconds: 500),
       vsync: this,
     );
-    _weatherConditionAnimationController?.dispose();
+    _weatherConditionAnimationController.dispose();
     _weatherConditionAnimationController = AnimationController(
       duration: Duration(milliseconds: 1000),
       vsync: this,

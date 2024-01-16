@@ -1,40 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/src/countries.dart';
 
-/// This is an almost exact replica of the built-in
-/// DropDownFormField. There's a bug in the original
-/// Widget that causes the input value to expand furhter than the
-/// input field, because it needs to be wrapped in an `Expanded`.
 class DropDownExpanded<T> extends FormField<T> {
   final bool isExpanded;
-  final initialValue;
+  final T? initialValue;
 
   DropDownExpanded({
-    this.isExpanded,
+    required this.isExpanded,
     this.initialValue,
-    this.onChanged,
-    Key key,
-    T value,
-    @required List<DropdownMenuItem<T>> items,
+    required this.onChanged,
+    Key? key,
+    required List<DropdownMenuItem<T>> items,
     InputDecoration decoration = const InputDecoration(),
-    FormFieldSetter<T> onSaved,
-    FormFieldValidator<T> validator,
-    Widget hint,
-  })  : assert(decoration != null),
-        super(
+    required FormFieldSetter<T> onSaved,
+    required FormFieldValidator<T> validator,
+    required Widget hint, required Country value,
+  }) : super(
             key: key,
             onSaved: onSaved,
-            initialValue: value,
+            initialValue: initialValue, // Use initialValue here
             validator: validator,
             builder: (FormFieldState<T> field) {
               final InputDecoration effectiveDecoration =
                   decoration.applyDefaults(Theme.of(field.context).inputDecorationTheme);
               return InputDecorator(
                 decoration: effectiveDecoration.copyWith(errorText: field.errorText),
-                isEmpty: value == null,
+                isEmpty: field.value == null,
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<T>(
                     isDense: true,
-                    value: value,
+                    value: field.value, // Use field.value
                     items: items,
                     hint: hint,
                     isExpanded: isExpanded,
@@ -44,8 +39,7 @@ class DropDownExpanded<T> extends FormField<T> {
               );
             });
 
-  /// Called when the user selects an item.
-  final ValueChanged<T> onChanged;
+  final ValueChanged<T?> onChanged; // onChanged should accept null
 
   @override
   FormFieldState<T> createState() => _DropdownButtonFormFieldState<T>();
@@ -53,11 +47,11 @@ class DropDownExpanded<T> extends FormField<T> {
 
 class _DropdownButtonFormFieldState<T> extends FormFieldState<T> {
   @override
-  DropDownExpanded<T> get widget => super.widget;
+  DropDownExpanded<T> get widget => super.widget as DropDownExpanded<T>; // Correct casting
 
   @override
-  void didChange(T value) {
+  void didChange(T? value) {
     super.didChange(value);
-    if (widget.onChanged != null) widget.onChanged(value);
+    widget.onChanged(value);
   }
 }

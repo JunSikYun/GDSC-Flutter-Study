@@ -8,7 +8,7 @@ import 'package:weather_app/widget/country_dropdown_field.dart';
 class AddNewCityPage extends StatefulWidget {
   final AppSettings settings;
 
-  const AddNewCityPage({Key key, this.settings}) : super(key: key);
+  const AddNewCityPage({Key? key, required this.settings}) : super(key: key);
 
   @override
   _AddNewCityPageState createState() => _AddNewCityPageState();

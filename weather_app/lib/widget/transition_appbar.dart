@@ -6,19 +6,19 @@ class TransitionAppbar extends AnimatedWidget {
   final Widget leadingAction;
 
   TransitionAppbar({
-    this.title,
-    this.actionIcon,
-    this.leadingAction,
-    Key key,
-    Animation<Color> animation,
+    required this.title,
+    required this.actionIcon,
+    required this.leadingAction,
+    Key? key,
+    required Animation<Color> animation,
   }) : super(key: key, listenable: animation);
 
   @override
   Widget build(BuildContext context) {
-    final Animation<Color> animation = listenable;
+    final Animation<Color> animation = listenable as Animation<Color>;
     return AppBar(
       backgroundColor: animation.value,
-      leading: leadingAction != null ? leadingAction : Container(),
+      leading: leadingAction,
       elevation: 0.0,
       bottomOpacity: 0.0,
       title: title,

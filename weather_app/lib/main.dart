@@ -16,14 +16,15 @@ void main() {
 class MyApp extends StatelessWidget {
   final AppSettings settings;
 
-  const MyApp({Key key, this.settings}) : super(key: key);
+  const MyApp({Key? key, required this.settings}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final theme = ThemeData(
       fontFamily: "Cabin",
       primaryColor: AppColor.midnightSky,
-      accentColor: AppColor.midnightCloud,
+      //수정
+      hintColor: AppColor.midnightCloud,
       primaryTextTheme: Theme.of(context).textTheme.apply(
             bodyColor: AppColor.textColorDark,
             displayColor: AppColor.textColorDark,

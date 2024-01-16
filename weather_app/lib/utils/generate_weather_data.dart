@@ -72,7 +72,7 @@ class WeatherDataRepository {
           dateTime: startDateTime,
           description: randomDescription,
           cloudCoveragePercentage: generateCloudCoverageNum(randomDescription),
-          temperature: tempBuilder,
+          temperature: tempBuilder, weatherIcon: '',
         ),
       );
 

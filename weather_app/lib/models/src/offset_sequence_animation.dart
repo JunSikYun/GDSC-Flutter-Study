@@ -5,7 +5,7 @@ class OffsetSequence {
   final Offset positionB;
   final Offset positionC;
 
-  OffsetSequence({this.positionA, this.positionB, this.positionC});
+  OffsetSequence({required this.positionA,required this.positionB,required this.positionC});
 
   factory OffsetSequence.fromBeginAndEndPositions(
     Offset offsetBegin,

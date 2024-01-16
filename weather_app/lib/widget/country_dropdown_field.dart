@@ -7,9 +7,9 @@ class CountryDropdownField extends StatelessWidget {
   final Country country;
 
   const CountryDropdownField({
-    Key key,
-    this.onChanged,
-    this.country,
+    Key? key,
+    required this.onChanged,
+    required this.country,
   }) : super(key: key);
 
   @override
@@ -22,7 +22,7 @@ class CountryDropdownField extends StatelessWidget {
           border: OutlineInputBorder(),
           labelText: "Country",
         ),
-        value: country ?? Country.AD,
+        value: country,
         onChanged: (Country newSelection) => onChanged(newSelection),
         items: Country.ALL.map((Country country) {
           return DropdownMenuItem(value: country, child: Text(country.name));

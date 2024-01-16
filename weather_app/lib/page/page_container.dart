@@ -8,7 +8,7 @@ import 'package:weather_app/utils/forecast_animation_utils.dart';
 class PageContainer extends StatefulWidget {
   final AppSettings settings;
 
-  const PageContainer({Key key, this.settings}) : super(key: key);
+  const PageContainer({Key? key, required this.settings}) : super(key: key);
 
   @override
   _PageContainerState createState() => _PageContainerState(settings);
@@ -55,12 +55,12 @@ class _PageContainerState extends State<PageContainer> {
               .toList();
         },
       ),
-      settingsButton: FlatButton(
+      settingsButton: TextButton(
+          onPressed: _showSettingsPage,
           child: Text(
-            AnimationUtil.temperatureLabels[settings.selectedTemperature],
-            style: Theme.of(context).textTheme.headline,
-          ),
-          onPressed: _showSettingsPage),
+            AnimationUtil.temperatureLabels[settings.selectedTemperature]!,
+            style: Theme.of(context).textTheme.headline1,
+          )),
       settings: settings,
     );
   }

@@ -27,7 +27,7 @@ class City {
   bool isDefault = false;
   int listIdx;
 
-  City({this.name, this.country, this.active, this.listIdx}) {
+  City({required this.name,required this.country,required this.active,required this.listIdx}) {
     assert(name != null);
     if (listIdx == null) {
       listIdx = allAddedCities.length + 1;

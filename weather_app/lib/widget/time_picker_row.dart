@@ -9,11 +9,11 @@ class TimePickerRow extends StatefulWidget {
   final int startIndex;
 
   const TimePickerRow({
-    Key key,
-    this.forecastController,
-    this.tabItems,
-    this.onTabChange,
-    this.startIndex,
+    Key? key,
+    required this.forecastController,
+    required this.tabItems,
+    required this.onTabChange,
+    required this.startIndex,
   }) : super(key: key);
 
   @override
@@ -21,7 +21,7 @@ class TimePickerRow extends StatefulWidget {
 }
 
 class _TimePickerRowState extends State<TimePickerRow> with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  late TabController _tabController;
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _TimePickerRowState extends State<TimePickerRow> with SingleTickerProvider
 
   @override
   void dispose() {
-    _tabController?.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -56,8 +56,8 @@ class _TimePickerRowState extends State<TimePickerRow> with SingleTickerProvider
     return TabBar(
       labelColor: Colors.black,
       unselectedLabelColor: Colors.black38,
-      unselectedLabelStyle: Theme.of(context).textTheme.caption.copyWith(fontSize: 10.0),
-      labelStyle: Theme.of(context).textTheme.caption.copyWith(fontSize: 12.0),
+      unselectedLabelStyle: Theme.of(context).textTheme.caption?.copyWith(fontSize: 10.0),
+      labelStyle: Theme.of(context).textTheme.caption?.copyWith(fontSize: 12.0),
       indicatorColor: Colors.transparent,
       labelPadding: EdgeInsets.symmetric(horizontal: 48.0, vertical: 8.0),
       controller: _tabController,
